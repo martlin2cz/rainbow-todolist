@@ -1,9 +1,11 @@
 package cz.martlin.rainbowtodolist.resource;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,11 +34,18 @@ public class TodolistItemsResource {
 
 	@RequestMapping( //
 			method = RequestMethod.POST, //
-			produces = MediaType.APPLICATION_JSON_VALUE //
-			)
+			produces = MediaType.APPLICATION_JSON_VALUE)
 	public TodolistItem create(@PathParam(value = "text") String text) {
 		TodolistItem item = new TodolistItem(text);
 		return service.create(item);
+	}
+
+	@RequestMapping( //
+			path = "remove/{id}", //
+			method = RequestMethod.DELETE, //
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public TodolistItem remove(@PathVariable("id") UUID id) {
+		return service.remove(id);
 	}
 
 	@RequestMapping( //

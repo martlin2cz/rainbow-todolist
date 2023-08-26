@@ -1,9 +1,9 @@
 package cz.martlin.rainbowtodolist.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cz.martlin.rainbowtodolist.dao.TodolistItemsDAO;
@@ -27,12 +27,15 @@ public class TodolistItemsService {
 		super();
 		this.dao = dao;
 	}
-	
-	
+
 	public TodolistItem create(TodolistItem item) {
 		return dao.create(item);
 	}
-	
+
+	public TodolistItem remove(UUID id) {
+		return dao.remove(id);
+	}
+
 	public List<TodolistItem> list() {
 		return dao.list();
 	}

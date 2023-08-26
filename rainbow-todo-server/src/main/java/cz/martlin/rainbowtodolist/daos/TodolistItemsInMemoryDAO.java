@@ -1,8 +1,10 @@
 package cz.martlin.rainbowtodolist.daos;
 
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
@@ -18,23 +20,30 @@ import cz.martlin.rainbowtodolist.model.TodolistItem;
 @Repository
 public class TodolistItemsInMemoryDAO implements TodolistItemsDAO {
 
-	private final List<TodolistItem> items;
+	private final Map<UUID, TodolistItem> items;
 
 	public TodolistItemsInMemoryDAO() {
-		items = new LinkedList<>();
+		items = new LinkedHashMap<>();
 
-		items.add(new TodolistItem("Sample todo list item"));
+		TodolistItem item = new TodolistItem("Sample todo list item");
+		items.put(item.getId(), item);
 	}
 
 	@Override
 	public TodolistItem create(TodolistItem item) {
-		items.add(item);
+		items.put(item.getId(), item);
 		return item;
 	}
 
 	@Override
+	public TodolistItem remove(UUID id) {
+		TodolistItem removed = items.remove(id);
+		return removed;
+	}
+
+	@Override
 	public List<TodolistItem> list() {
-		return Collections.unmodifiableList(items);
+		return new ArrayList<>(items.values());
 	}
 
 	@Override
