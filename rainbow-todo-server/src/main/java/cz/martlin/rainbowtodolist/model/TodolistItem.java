@@ -25,9 +25,17 @@ public class TodolistItem {
 		this.text = text;
 	}
 
+	public UUID getId() {
+		return id;
+	}
+
+	public String getText() {
+		return text;
+	}
+
 	@Override
 	public String toString() {
 		return "TodolistItem [id=" + id + ", text=" + text + "]";
 	}
-	
+
 }
