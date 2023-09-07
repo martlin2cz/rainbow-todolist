@@ -36,8 +36,9 @@ class TodolistItemsInMemoryDAOTest {
 
 	@Test
 	void testList() {
-		TodolistItem sampleItem = new TodolistItem("Sample todo list item");
-		assertTrue(dao.list().contains(sampleItem));
+		TodolistItem item = dao.list().get(0);
+		
+		assertEquals("Sample todo list item", item.getText());
 	}
 
 }
