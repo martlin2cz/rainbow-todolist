@@ -1,12 +1,15 @@
 package cz.martlin.rainbowtodolist.model.daos;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import cz.martlin.rainbowtodolist.model.dao.RainbowTasksDAO;
+import cz.martlin.rainbowtodolist.model.dao.RainbowTasksOrder;
 import cz.martlin.rainbowtodolist.model.model.RainbowTask;
 
 /**
@@ -24,6 +27,10 @@ public class RainbowTasksInMemoryDAO implements RainbowTasksDAO {
 
 	@Override
 	public RainbowTask create(RainbowTask task) {
+		if (tasks.containsKey(task.getId())) {
+			throw new IllegalArgumentException("Such task already exist!");
+		}
+		
 		tasks.put(task.getId(), task);
 		return task;
 	}
@@ -39,20 +46,28 @@ public class RainbowTasksInMemoryDAO implements RainbowTasksDAO {
 		tasks.remove(task.getId());
 		return task;
 	}
-	
+
 	@Override
-	public List<RainbowTask> list() {
-		return new ArrayList<>(tasks.values());
+	public List<RainbowTask> list(RainbowTasksOrder order) {
+		ArrayList<RainbowTask> list = new ArrayList<>(tasks.values());
+
+		if (order == null) {
+			return list;
+		} else {
+			Comparator<RainbowTask> comparator = order.getComparator();
+			Collections.sort(list, comparator);
+			return list;
+		}
 	}
 
 	@Override
-	public RainbowTask pick(UUID id) {
+	public RainbowTask find(UUID id) {
 		return tasks.get(id);
 	}
 
 	@Override
 	public String toString() {
-		return "RainbowTasksInMemoryDAO [items=" + tasks + "]";
+		return "RainbowTasksInMemoryDAO [tasks=" + tasks.values() + "]";
 	}
 
 }

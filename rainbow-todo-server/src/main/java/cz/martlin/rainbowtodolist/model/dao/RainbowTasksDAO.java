@@ -38,17 +38,19 @@ public interface RainbowTasksDAO {
 	RainbowTask delete(RainbowTask task);
 
 	/**
-	 * Lists all the {@link RainbowTask}s.
+	 * Lists all the {@link RainbowTask}s, possibly ordering them.
+	 * 
+	 * @param order 
 	 * 
 	 * @return
 	 */
-	List<RainbowTask> list();
+	List<RainbowTask> list(RainbowTasksOrder order);
 
 	/**
 	 * Find the {@link RainbowTask} by the given ID. Returns null if no such.
 	 * 
 	 * @return
 	 */
-	RainbowTask pick(UUID id);
+	RainbowTask find(UUID id);
 
 }
