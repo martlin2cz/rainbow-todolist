@@ -1,4 +1,4 @@
-package cz.martlin.rainbowtodolist.model;
+package cz.martlin.rainbowtodolist.model.model;
 
 /**
  * The status of the rainbow todolist task.

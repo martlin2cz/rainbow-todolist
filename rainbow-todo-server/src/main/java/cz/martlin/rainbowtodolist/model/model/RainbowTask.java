@@ -1,4 +1,4 @@
-package cz.martlin.rainbowtodolist.model;
+package cz.martlin.rainbowtodolist.model.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

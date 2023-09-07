@@ -1,4 +1,4 @@
-package cz.martlin.rainbowtodolist;
+package cz.martlin.rainbowtodolist.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

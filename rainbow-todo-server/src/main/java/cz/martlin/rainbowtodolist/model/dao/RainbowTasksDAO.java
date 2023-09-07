@@ -1,9 +1,9 @@
-package cz.martlin.rainbowtodolist.dao;
+package cz.martlin.rainbowtodolist.model.dao;
 
 import java.util.List;
 import java.util.UUID;
 
-import cz.martlin.rainbowtodolist.model.RainbowTask;
+import cz.martlin.rainbowtodolist.model.model.RainbowTask;
 
 /**
  * The DAO for the {@link RainbowTask}s.

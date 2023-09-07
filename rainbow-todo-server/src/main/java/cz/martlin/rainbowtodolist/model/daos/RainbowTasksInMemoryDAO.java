@@ -1,4 +1,4 @@
-package cz.martlin.rainbowtodolist.daos;
+package cz.martlin.rainbowtodolist.model.daos;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import cz.martlin.rainbowtodolist.dao.RainbowTasksDAO;
-import cz.martlin.rainbowtodolist.model.RainbowTask;
+import cz.martlin.rainbowtodolist.model.dao.RainbowTasksDAO;
+import cz.martlin.rainbowtodolist.model.model.RainbowTask;
 
 /**
  * The in-memory implementation of the {@link RainbowTask}s DAO.
