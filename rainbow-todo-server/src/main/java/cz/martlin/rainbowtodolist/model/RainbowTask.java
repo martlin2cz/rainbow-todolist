@@ -52,6 +52,42 @@ public class RainbowTask {
 		this.created = created;
 	}
 
+	/**
+	 * Returns the id.
+	 * 
+	 * @return
+	 */
+	public UUID getId() {
+		return id;
+	}
+
+	/**
+	 * Returns the text.
+	 * 
+	 * @return
+	 */
+	public String getText() {
+		return text;
+	}
+
+	/**
+	 * Returns the current status.
+	 * 
+	 * @return
+	 */
+	public RainbowTaskStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * Returns the date of creation.
+	 * 
+	 * @return
+	 */
+	public LocalDateTime getCreated() {
+		return created;
+	}
+
 	@Override
 	public String toString() {
 		return "RainbowTask [id=" + id + ", text=" + text + ", status=" + status + ", created=" + created + "]";
@@ -78,4 +114,5 @@ public class RainbowTask {
 	public static RainbowTask withStatus(RainbowTask task, RainbowTaskStatus newStatus) {
 		return new RainbowTask(task.id, task.text, newStatus, task.created);
 	}
+
 }
